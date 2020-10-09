@@ -45,7 +45,6 @@ function draw() {
 
   bob2.display();
   rope2.display();
-
   bob3.display();
   rope3.display();
 
@@ -59,5 +58,18 @@ function draw() {
  
 }
 
+function keyPressed(){
+	if(keyCode===UP_ARROW){
+		Matter.Body.applyForce(bob1.body,bob1.body.position,{x:-50,y:-45});
+	}
+}
 
+function drawLine(constraint){
+	bobBodyPosition=constraint.bodyA.position;
+	roofBodyPosition=constraint.bodyB.position;
+	roofBodyOffset=constraint.pointB;
+	roofBodyX=roofBodyPosition.x+roofBodyOffset.x;
+	roofBodyY=roofBodyPosition.y+roofBodyOffset.y;
+	line(bobBodyPosition.x,bobBodyPosition.y,roofBodyX,roofBodyY);
+}
 
